@@ -1,0 +1,47 @@
+managed implementation in class zbp_cas_i_invc unique;
+strict(1) ;
+
+define behavior for ZCAS_I_INVC alias Invoice
+persistent table zdas_invoice
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly :update ) Document;
+  association _Item { create; }
+ static action CreateInvoiceDocument deep parameter ZCAS_A_CREATEINVOICE;
+
+  mapping for ZDAS_INVOICE{
+  DocDate=doc_date;
+  DocTime=doc_time;
+  Document=document;
+  Partner=partner;
+
+  }
+}
+
+define behavior for ZCAS_I_IVIT alias Item
+persistent table zdas_item
+lock dependent by _Invoice
+authorization dependent by _Invoice
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly:update ) Document, PosNumber;
+  association _Invoice;
+
+  mapping for ZDAS_ITEM {
+  Currency=currency;
+  Document=document;
+  Material=material;
+  PosNumber=pos_number;
+  Price=price;
+  Quantity=quantity;
+  StockUnit=stock_unit;
+
+  }
+}

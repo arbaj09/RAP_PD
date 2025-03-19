@@ -1,0 +1,20 @@
+unmanaged implementation in class zbp_cas_i_unmgd unique;
+strict ( 2 );
+
+define behavior for ZCAS_I_UNMGD //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) TableKey;
+
+  mapping for ZDAS_UNMGD {
+  TableKey = gen_key;
+  Discription = text;
+  CreationDate = cdate;
+  }
+}

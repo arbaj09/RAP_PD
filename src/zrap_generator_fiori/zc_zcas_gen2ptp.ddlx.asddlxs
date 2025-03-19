@@ -1,0 +1,70 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ZCAS_GEN2P', 
+    typeNamePlural: 'ZCAS_GEN2Ps', 
+    title: {
+      type: #STANDARD, 
+      label: 'ZCAS_GEN2P', 
+      value: 'UuidKey'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'UuidKey', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZC_ZCAS_GEN2PTP with
+{
+  @UI.facet: [ {
+    id: 'idZCAS_GEN2P', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'ZCAS_GEN2P', 
+    position: 10 
+  } ]
+  @UI.hidden: true
+  UuidPos;
+  
+  @UI.hidden: true
+  UuidKey;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH, 
+    label: 'Price'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Price'
+  } ]
+  Price;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH, 
+    label: 'Currency'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Currency'
+  } ]
+  Currency;
+  
+  @UI.hidden: true
+  LocalLastChanged;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 60 
+  } ]
+  LastChanged;
+}

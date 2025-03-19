@@ -1,0 +1,9 @@
+projection;
+strict ( 2 );
+
+define behavior for ZCAS_C_UNMGD //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+}

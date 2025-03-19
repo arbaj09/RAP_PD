@@ -1,0 +1,72 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'ZCAS_GEN2H', 
+    typeNamePlural: 'ZCAS_GEN2Hs', 
+    title: {
+      type: #STANDARD, 
+      label: 'ZCAS_GEN2H', 
+      value: 'UuidKey'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'UuidKey', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view ZC_ZCAS_GEN2H01TP with
+{
+  @UI.facet: [ {
+    id: 'idCollection', 
+    type: #COLLECTION, 
+    label: 'ZCAS_GEN2H', 
+    position: 10 
+  }, 
+  {
+    id: 'idIdentification', 
+    parentId: 'idCollection', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 20 
+  }, 
+  {
+    id: 'idZCAS_GEN2P', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'ZCAS_GEN2P', 
+    position: 30 , 
+    targetElement: '_ZCAS_GEN2P'
+  } ]
+  @UI.hidden: true
+  UuidKey;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #HIGH, 
+    label: 'Description'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Description'
+  } ]
+  Description;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  IsActive;
+  
+  @UI.hidden: true
+  LocalLastChanged;
+  
+  @UI.hidden: true
+  LastChanged;
+}

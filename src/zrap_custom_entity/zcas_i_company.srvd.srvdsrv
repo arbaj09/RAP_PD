@@ -1,0 +1,4 @@
+@EndUserText.label: 'service defination'
+define service ZCAS_I_COMPANY {
+  expose ZCAS_I_CNAME;
+}

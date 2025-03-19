@@ -1,0 +1,5 @@
+@EndUserText.label: 'service for invoice'
+define service ZCS_INVOICE {
+  expose ZCAS_C_INVC as Invoice;
+  expose ZCAS_C_IVIT as ITEM;
+}

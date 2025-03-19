@@ -1,0 +1,65 @@
+managed implementation in class zbp_cas_r_drpcurrency unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZCAS_R_DRPCURRENCY alias Currency with unmanaged save
+//persistent table zdas_add_curr
+draft table zdas_add_curr_dr
+
+lock master total etag LastChanged
+authorization master ( instance )
+etag master LocalLastChanged
+{
+  internal create;
+  update;
+  internal delete;
+  field ( readonly ) Currency,Decimals,CurrencyISOCode,AlternativeCurrencyKey,CurrencyName,CurrencyShortName,LastEditor;
+   draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  action LoadExcelContent parameter ZCAS_S_EXCEL_POPUP result [1] $self;
+  association _Country { create; with draft; }
+
+  mapping for zdas_add_curr {
+
+   Currency = curreny;
+
+
+      LastEditor       = last_editor;
+      ExcelAttachement   = excel_attachment;
+    ExcelMimetype      = excel_mimetype;
+    ExcelFilename      = excel_filename;
+    PictureAttachement = picture_attachment;
+    PictureMimetype    = picture_mimetype;
+    PictureFilename    = picture_filename;
+      LocalLastChanged = local_last_changed;
+      LastChanged      = last_changed;
+
+  }
+}
+
+define behavior for ZCAS_I_CURRENCY_COUNTRY alias Country with unmanaged save
+//persistent table zdas_drp_country
+draft table ZDAS_DRP_CTRY_D
+lock dependent by _currency
+authorization dependent by _currency
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Currency;
+  field ( readonly : update ) Country;
+  association _currency {with draft;}
+
+
+  mapping for zdas_drp_country {
+
+  Currency       = currency;
+      Country        = country;
+      CountryRanking = ranking;
+
+  }
+}

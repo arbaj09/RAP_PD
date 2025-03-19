@@ -1,0 +1,69 @@
+managed implementation in class zbp_cas_i_partner unique;
+strict ;
+with draft;
+
+define behavior for ZCAS_I_PARTNER  //alias <alias_name>
+persistent table zdas_partner
+draft table zdas_partner_dra
+lock master total etag LastChangedAt
+authorization master ( instance )
+late numbering
+etag master LastChangedAt
+//early numbering
+//etag master <field_name>
+{
+  create;
+  update;
+  delete ( features : global );
+  field ( readonly ) PartnerNumber;
+  draft action Resume;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft determine action Prepare
+  {
+
+    validation validateKeyIsFilled;
+    validation validateCoreData;
+  }
+
+  determination fillCurrency on modify { create; update; }
+
+
+  validation validateKeyIsFilled on save { create; }
+  validation validateCoreData on save { field Country, PaymentCurrency; }
+
+
+  action fillEmptyStreets;
+  static action clearAllEmptyStreets;
+  //field (numbering:managed) PartnerNumber;
+
+  //feature control insta
+  action ( features : instance ) FillEmptyStreetInstanceFeature result [1] $self;
+  action ( features : instance ) clearEmptyStreet result [1] $self;
+
+
+
+  static action withPopup parameter ZCAS_I_POPUP;
+
+
+  factory action copyLine [1];
+
+
+
+
+
+  mapping for zdas_partner
+    {
+      PartnerName     = name;
+      City            = city;
+      Country         = country;
+      PaymentCurrency = payment_currency;
+      PartnerNumber   = partner;
+      Street          = street;
+      LastChangedAt   = last_changed_at;
+      CreatedAt       = created_at;
+      CreatedBy       = created_by;
+      LastChangedBy   = last_changed_by;
+    }
+}

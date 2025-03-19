@@ -1,0 +1,4 @@
+@EndUserText.label: 'service defination'
+define service ZSC_UNMGD {
+  expose ZCAS_C_UNMGD;
+}

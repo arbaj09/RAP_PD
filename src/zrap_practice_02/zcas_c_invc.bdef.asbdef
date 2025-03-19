@@ -1,0 +1,20 @@
+projection;
+strict ( 1 );
+
+define behavior for ZCAS_C_INVC alias Invoice
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Item { create; }
+  use action CreateInvoiceDocument;
+}
+
+define behavior for ZCAS_C_IVIT alias Item
+{
+  use update;
+  use delete;
+
+  use association _Invoice;
+}

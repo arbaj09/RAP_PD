@@ -1,0 +1,90 @@
+managed;
+strict ( 2 );
+with draft;
+extensible
+{
+  with additional save;
+  with determinations on modify;
+  with determinations on save;
+  with validations on save;
+}
+define behavior for ZR_ZCAS_GEN2H01TP alias ZCAS_GEN2H
+implementation in class ZBP_R_ZCAS_GEN2H01TP unique
+persistent table ZDAS_GEN2H
+extensible
+draft table ZZCAS_GEN2H00D
+query ZR_ZCAS_GEN2H_D
+etag master LocalLastChanged
+lock master total etag LastChanged
+authorization master( global )
+
+{
+  field ( readonly )
+   UuidKey,
+   LocalLastChanged,
+   LastChanged;
+
+  field ( numbering : managed )
+   UuidKey;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare extensible;
+
+  mapping for ZDAS_GEN2H corresponding extensible
+  {
+    UuidKey = UUID_KEY;
+    Description = DESCRIPTION;
+    IsActive = IS_ACTIVE;
+    LocalLastChanged = LOCAL_LAST_CHANGED;
+    LastChanged = LAST_CHANGED;
+  }
+
+  association _ZCAS_GEN2P { create; with draft; }
+
+  determination CalculateUuidKey on save { create; }
+}
+
+define behavior for ZR_ZCAS_GEN2PTP alias ZCAS_GEN2P
+implementation in class ZBP_R_ZCAS_GEN2PTP unique
+persistent table ZDAS_GEN2P
+extensible
+draft table ZZCAS_GEN2P00D
+etag master LocalLastChanged
+lock dependent by _ZCAS_GEN2H
+authorization dependent by _ZCAS_GEN2H
+
+{
+  field ( readonly )
+   UuidPos,
+   UuidKey,
+   LocalLastChanged;
+
+  field ( numbering : managed )
+   UuidPos;
+
+
+  update;
+  delete;
+
+  mapping for ZDAS_GEN2P corresponding extensible
+  {
+    UuidPos = UUID_POS;
+    UuidKey = UUID_KEY;
+    Price = PRICE;
+    Currency = CURRENCY;
+    LocalLastChanged = LOCAL_LAST_CHANGED;
+    LastChanged = LAST_CHANGED;
+  }
+
+  association _ZCAS_GEN2H { with draft; }
+
+  determination CalculateUuidKey on save { create; }
+}

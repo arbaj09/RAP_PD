@@ -1,0 +1,33 @@
+projection;
+strict ( 2 );
+extensible;
+use draft;
+use side effects;
+define behavior for ZC_ZCAS_GEN2H01TP alias ZCAS_GEN2H
+extensible
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _ZCAS_GEN2P { create; with draft; }
+}
+
+define behavior for ZC_ZCAS_GEN2PTP alias ZCAS_GEN2P
+extensible
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _ZCAS_GEN2H { with draft; }
+}

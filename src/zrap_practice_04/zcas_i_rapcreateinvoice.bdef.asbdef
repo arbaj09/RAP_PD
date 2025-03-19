@@ -1,0 +1,15 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZCAS_I_RAPCreateInvoice  alias Invoice
+{
+field ( suppress ) DummyKey;
+  association _Position;
+ // static action CreateInvoiceDocument deep parameter ZCAS_I_RAPCreateInvoice;
+}
+
+define behavior for ZCAS_I_RAPCreatePosition alias Position
+{
+field (suppress ) DummyKey;
+}

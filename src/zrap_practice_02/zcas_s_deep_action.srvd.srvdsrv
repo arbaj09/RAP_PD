@@ -1,0 +1,5 @@
+@EndUserText.label: 'service defination for deep action'
+define service ZCAS_S_DEEP_ACTION {
+  expose ZCAS_I_RAPCreateInvoice  as Invoice;
+  expose ZCAS_I_RAPCreatePosition as Positon;
+}

@@ -1,0 +1,62 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:{
+typeName: 'Invoice',
+typeNamePlural: 'Invoices',
+title:{ value: 'Document'},
+description:{ label: '(Description)' },
+typeImageUrl: 'sap-icon://my-sales-order'
+}
+annotate entity ZCAS_C_INVC with
+
+{
+@UI.facet: [
+{ 
+id: 'ControllHeader',
+label: 'Header',
+purpose: #HEADER,
+targetQualifier: 'Control_Header',
+type: #FIELDGROUP_REFERENCE
+ },
+ { 
+ id: 'FieldArea',
+ label: ' Information',
+ type: #FIELDGROUP_REFERENCE,
+ purpose: #STANDARD,
+ targetQualifier: 'Field_Area'
+ 
+ },
+ { 
+ id :'ControlSection',
+ type: #LINEITEM_REFERENCE,
+ position: 20,
+ targetElement: '_Item'
+ }
+ ]
+ 
+
+  @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @UI.lineItem: [{  position: 10 }]
+
+  Document;
+  @UI.selectionField: [{position: 20  }]
+  @UI.identification: [{ position: 20 }]
+  @UI.lineItem: [{  position: 20 }]
+  @UI.fieldGroup: [{position:20,qualifier: 'Field_Area',label: 'Date'}]
+  DocDate;
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  @UI.lineItem: [{  position: 30 }]
+  @UI.fieldGroup: [{ position: 30,qualifier: 'Field_Area', label: 'Time'  }]
+  DocTime;
+  @UI.selectionField: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  @UI.lineItem: [{  position: 40 }]
+  @UI.fieldGroup: [{ position: 40,qualifier: 'Control_Header' ,label: 'Partner' }]
+  Partner;
+  @UI.lineItem: [{  position: 50 }]
+  NumberOfPositions;
+  /* Associations */
+
+
+}

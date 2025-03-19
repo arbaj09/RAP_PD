@@ -1,0 +1,5 @@
+@EndUserText.label: 'Currency Service'
+define service ZCAS_S_DRP_CURRENCY {
+  expose ZCAS_C_DRPCURRENCY      as Currency;
+  expose ZCAS_C_CURRENCY_COUNTRY as Country;
+}

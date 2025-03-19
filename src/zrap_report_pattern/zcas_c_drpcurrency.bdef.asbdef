@@ -1,0 +1,25 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZCAS_C_DRPCURRENCY //alias <alias_name>
+{
+  use update;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action LoadExcelContent;
+
+  use association _Country { create; with draft; }
+}
+
+define behavior for ZCAS_C_CURRENCY_COUNTRY //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _currency { with draft; }
+}

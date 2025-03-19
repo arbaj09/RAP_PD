@@ -1,0 +1,79 @@
+@Metadata.layer: #PARTNER
+
+@UI: {
+  headerInfo: {
+    typeName: 'Partner',
+    typeNamePlural: 'Partners',
+    title:{ type: #STANDARD , value: 'PartnerName' }
+  }
+}
+annotate entity ZCAS_C_PARTNER
+    with 
+   
+{
+
+
+ @UI.facet      : [
+    {
+      id         : 'FacetCollection',
+      type       : #COLLECTION,
+      label      : 'Partner Collection'
+    },
+    {
+      id         : 'FacetPartnerFields',
+      parentId   : 'FacetCollection',
+      label      : 'Information',
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'PARTNER_INFO'
+    },
+    {
+      id         : 'FacetPartnerAddress',
+      parentId   : 'FacetCollection',
+      label      : 'Address',
+      type       : #IDENTIFICATION_REFERENCE,
+      targetQualifier: 'PARTNER_ADDRESS'
+    }
+  ]
+
+  @UI.selectionField : [ { position: 10 } ]
+  @UI.lineItem: [
+  { position: 20, importance: #MEDIUM },
+{ position: 10, type: #FOR_ACTION, label: 'Fill', dataAction: 'fillEmptyStreets' },
+  { position: 20, type: #FOR_ACTION, label: 'Clear All', dataAction: 'clearAllEmptyStreets' },
+  { position: 30 ,type: #FOR_ACTION ,label: 'Copy'  , dataAction: 'copyLine'},
+  { position: 40 , type: #FOR_ACTION ,label: 'PopUp' ,dataAction: 'withPopup' },
+  { position: 50 ,type: #FOR_ACTION ,label: 'fillEmptyfearure'  , dataAction: 'FillEmptyStreetInstanceFeature' ,importance: #HIGH},
+  { position: 50 ,type: #FOR_ACTION ,label: 'ClearEmptyFeature',dataAction: 'clearEmptyStreet' ,importance: #HIGH }
+  
+  ]
+  @UI.identification: [{ position: 10, qualifier: 'PARTNER_INFO' }]
+  @EndUserText.label: 'Partner'
+  @EndUserText.quickInfo: 'Identifier of the partner'
+  PartnerNumber;
+  @UI.selectionField : [ { position: 20 } ]
+  @UI.lineItem: [{ position: 10, importance: #MEDIUM }]
+  @UI.identification: [{ position: 20, qualifier: 'PARTNER_INFO' }]
+  @EndUserText.label: 'Name'
+  @EndUserText.quickInfo: 'Partner name'
+  PartnerName;
+  @UI.lineItem: [{ position: 40, importance: #MEDIUM }]
+  @UI.identification: [{ position: 30, qualifier: 'PARTNER_ADDRESS' }]
+  @EndUserText.label: 'Street'
+  @EndUserText.quickInfo: 'Street and Housenumber'
+  Street;
+  @UI.lineItem: [{ position: 30, importance: #MEDIUM }]
+  @UI.identification: [{ position: 40, qualifier: 'PARTNER_ADDRESS' }]
+  @EndUserText.label: 'City'
+  @EndUserText.quickInfo: 'City of the partner'
+  City;
+  @UI.lineItem: [{ position: 50, importance: #HIGH }]
+  @UI.identification: [{ position: 50, qualifier: 'PARTNER_ADDRESS' }]
+  @EndUserText.label: 'Ctry'
+  @EndUserText.quickInfo: 'Country'
+  Country;
+  @UI.identification: [{ position: 60, qualifier: 'PARTNER_INFO' ,importance: #MEDIUM }]
+  @EndUserText.label: 'PayCurr'
+  @EndUserText.quickInfo: 'Payment currency'
+  PaymentCurrency;
+    
+}

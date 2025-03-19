@@ -1,0 +1,13 @@
+@EndUserText.label: 'Invoice Status-Type'
+define type ZCAS_DemoCDSInvoiceStatus: abap.char( 1 ) ENUM
+{ 
+@EndUserText.label: 'Initial'
+Empty  =INITIAL;
+@EndUserText.label: 'Created'
+Created  = 'C';
+@EndUserText.label: 'Payed'
+Payed = 'P';
+
+@EndUserText.label: 'Closed'
+Closed = 'O';
+}

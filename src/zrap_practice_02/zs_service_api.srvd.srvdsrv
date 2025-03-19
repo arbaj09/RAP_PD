@@ -1,0 +1,5 @@
+@EndUserText.label: 'service defination for deep action'
+define service ZS_SERVICE_API {
+  expose ZCAS_C_INVC as Invoice;
+  expose ZCAS_C_IVIT as ITEM;
+}

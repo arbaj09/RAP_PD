@@ -1,0 +1,5 @@
+@EndUserText.label: 'Simple partner Service'
+define service ZCAS_PARTNER {
+  expose ZCAS_C_PARTNER as Partner;
+  expose ZCAS_I_CITYVH;
+}

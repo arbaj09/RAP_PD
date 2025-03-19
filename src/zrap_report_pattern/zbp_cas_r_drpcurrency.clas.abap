@@ -1,0 +1,5 @@
+CLASS zbp_cas_r_drpcurrency DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zcas_r_drpcurrency.
+ENDCLASS.
+
+CLASS zbp_cas_r_drpcurrency IMPLEMENTATION.
+ENDCLASS.

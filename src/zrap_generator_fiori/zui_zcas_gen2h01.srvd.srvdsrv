@@ -1,0 +1,6 @@
+@AbapCatalog.extensibility.extensible: true
+@ObjectModel.leadingEntity.name: 'ZC_ZCAS_GEN2H01TP'
+define service ZUI_ZCAS_GEN2H01 {
+  expose ZC_ZCAS_GEN2H01TP as ZCAS_GEN2H;
+  expose ZC_ZCAS_GEN2PTP as ZCAS_GEN2P;
+}

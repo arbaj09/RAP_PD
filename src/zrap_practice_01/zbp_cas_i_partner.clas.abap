@@ -1,0 +1,6 @@
+
+CLASS zbp_cas_i_partner DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zcas_i_partner.
+ENDCLASS.
+
+CLASS zbp_cas_i_partner IMPLEMENTATION.
+ENDCLASS.

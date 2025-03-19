@@ -1,0 +1,30 @@
+interface;
+extensible;
+use draft;
+use side effects;
+define behavior for ZI_ZCAS_GEN2H01TP alias ZCAS_GEN2H
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _ZCAS_GEN2P { create; with draft; }
+}
+
+define behavior for ZI_ZCAS_GEN2PTP alias ZCAS_GEN2P
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _ZCAS_GEN2H { with draft; }
+}

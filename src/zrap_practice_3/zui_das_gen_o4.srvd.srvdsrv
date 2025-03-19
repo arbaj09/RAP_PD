@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_DAS_GEN'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_DAS_GEN'
+  }
+}
+define service ZUI_DAS_GEN_O4 provider contracts odata_v4_ui {
+  expose ZC_DAS_GEN;
+}
