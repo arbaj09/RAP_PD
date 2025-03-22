@@ -1,0 +1,13 @@
+CLASS zcl_cas__event_consumption DEFINITION
+   PUBLIC ABSTRACT FINAL
+  FOR EVENTS OF zcas_r_drpcurrency.
+
+  PUBLIC SECTION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_cas__event_consumption IMPLEMENTATION.
+ENDCLASS.

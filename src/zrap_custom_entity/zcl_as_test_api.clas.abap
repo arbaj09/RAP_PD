@@ -50,7 +50,7 @@ CLASS ZCL_AS_TEST_API DEFINITION PUBLIC FINAL CREATE PUBLIC.
 
   PRIVATE SECTION.
     CONSTANTS:
-      base_url     TYPE string VALUE 'https://jsonplaceholder.typicode.com/posts',
+      base_url     TYPE string VALUE 'https://jsonplaceholder.typicode.com/',
       content_type TYPE string VALUE 'Content-type',
       json_content TYPE string VALUE 'application/json; charset=UTF-8'.
 ENDCLASS.

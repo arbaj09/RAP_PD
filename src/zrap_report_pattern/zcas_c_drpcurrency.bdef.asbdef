@@ -13,6 +13,11 @@ define behavior for ZCAS_C_DRPCURRENCY //alias <alias_name>
   use action Prepare;
   use action LoadExcelContent;
 
+
+  side effects {
+  action LoadExcelContent affects entity _Country , field ExcelAttachement;
+  }
+
   use association _Country { create; with draft; }
 }
 

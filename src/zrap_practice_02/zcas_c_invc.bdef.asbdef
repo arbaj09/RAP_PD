@@ -8,7 +8,9 @@ define behavior for ZCAS_C_INVC alias Invoice
   use delete;
 
   use association _Item { create; }
-  use action CreateInvoiceDocument;
+//  use action CreateInvoiceDocument;
+//use action CreateMultipleInvoices;
+
 }
 
 define behavior for ZCAS_C_IVIT alias Item

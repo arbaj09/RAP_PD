@@ -1,0 +1,16 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+
+define behavior for ZCAS_S_CreateInvoice alias Invoice
+
+{
+field (suppress ) DummyKey;
+association _Item;
+}
+
+define behavior for ZCAS_S_CreateItem alias Item
+{
+field (suppress ) DummyKey;
+}

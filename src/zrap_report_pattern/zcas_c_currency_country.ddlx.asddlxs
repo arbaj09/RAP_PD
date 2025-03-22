@@ -1,22 +1,52 @@
 @Metadata.layer: #CUSTOMER
+
+@UI.headerInfo:{ 
+typeName: 'detail',
+typeNamePlural: 'details',
+title:{ value: 'Country'  },
+description:{ value: 'Currency' }
+
+
+
+
+
+}
+
+
+
 annotate entity ZCAS_C_CURRENCY_COUNTRY
     with 
 {
+
+
+
+  @UI.facet: [
+  {
+        id         : 'Information',
+        label      : ' Details',
+        position   : 10,
+        type       : #IDENTIFICATION_REFERENCE,
+        targetQualifier: 'Info'
+  }]
     @UI.hidden: true
   Currency;
 
   @UI:{
     lineItem: [{ position: 10 }]
   }
+  @UI.identification: [{ position: 10  , qualifier: 'Info'}]
+  
   Country;
 
   @UI:{
     lineItem: [{ position: 20 }]
   }
+    @UI.identification: [{ position: 20  , qualifier: 'Info'}]
   CountryName;
   
   @UI:{
     lineItem: [{ position: 30 }]
   }
+    @UI.identification: [{ position: 30  , qualifier: 'Info'}]
   CountryRanking;
 }
